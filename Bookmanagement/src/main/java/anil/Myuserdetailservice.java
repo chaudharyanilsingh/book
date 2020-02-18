@@ -10,13 +10,15 @@ public class Myuserdetailservice implements UserDetailsService {
 @Autowired
 private UserRegistrationInterface regrepo;
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		UserRegistration user=regrepo.findByEmail(email);
-		if(user==null)
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		UserRegistration user=regrepo.findByEmail(username);
+		System.out.println(user);
+	if(user==null)
 		{
+		System.out.println("here is problem");
 			throw new UsernameNotFoundException("User 404");
-		}
-		return new Userprincipal(user);
+		}	
+	return new Userprincipal(user);
 	}
 
 }

@@ -2,12 +2,15 @@ package anil;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class Userprincipal implements UserDetails {
+
+
 
 	public Userprincipal(UserRegistration userreg) {
 		super();
@@ -21,9 +24,15 @@ public class Userprincipal implements UserDetails {
 	private UserRegistration userreg;
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Collections.singleton(new SimpleGrantedAuthority("USER"));
+		List<SimpleGrantedAuthority> auths = new java.util.ArrayList<SimpleGrantedAuthority>();
+		auths.add(new SimpleGrantedAuthority("admin"));
+		return auths;
 	}
-
+	
+/*	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return Collections.singleton(new SimpleGrantedAuthority("Admin"));
+	}
+*/
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub

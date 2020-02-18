@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     initialization-mode: always
     password: root
-    url: jdbc:mysql://localhost:3306/BookDatabase?createDatabaseIfNotExist=true&verifyServerCertificate=false&useSSL=false&requireSSL=false
+    url: jdbc:mysql://localhost:3306/BookDatabaseextra?createDatabaseIfNotExist=true&verifyServerCertificate=false&useSSL=false&requireSSL=false
     username: root
   jpa:
     generate-ddl: true
