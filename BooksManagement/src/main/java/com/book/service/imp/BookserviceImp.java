@@ -4,39 +4,25 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.book.db.entity.Author;
 import com.book.db.entity.Books;
 import com.book.db.entity.Category;
 import com.book.db.entity.Publisher;
-import com.book.db.entity.UserRegistration;
 import com.book.repository.AuthorRepository;
 import com.book.repository.BooksRepository;
 import com.book.repository.CategoryRepository;
 import com.book.repository.PublisherRepository;
-import com.book.repository.UserRegistrationRepository;
-import com.book.service.AuthorService;
 import com.book.service.BookService;
-import com.book.service.PublisherService;
-import com.book.service.UserRegistrationService;
-
 @Service
 public class BookserviceImp implements BookService  
 {
 
 	@Autowired
 	private BooksRepository bookRepository;
-
-	@Autowired
-	private UserRegistrationRepository  registrationRepository;
-
 	@Autowired
 	private AuthorRepository authorRepository;
 	

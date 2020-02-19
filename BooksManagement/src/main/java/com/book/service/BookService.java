@@ -3,8 +3,6 @@ package com.book.service;
 import java.util.List;
 
 import com.book.db.entity.Books;
-import com.book.db.entity.UserRegistration;
-
 public interface BookService {
 
 	List<Books> findAll(int no,String sortby);

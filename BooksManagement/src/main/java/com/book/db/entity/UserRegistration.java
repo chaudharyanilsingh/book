@@ -5,44 +5,32 @@ import javax.persistence.Id;
 
 @Entity
 public class UserRegistration {
+	public UserRegistration(String firstName, String lastName, String email, String password) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+	}
 	public UserRegistration() {
 		super();
 	}
-	public UserRegistration(String firstName, String lastName, String email, String password) {
-		super();
-		FirstName = firstName;
-		LastName = lastName;
-		email = email;
-		Password = password;
-	}
-	private String FirstName;
-	private String LastName;
+	private String firstName;
+	private String lastName;
 	@Id
 	private String email;
-	private String Password;
+	private String password;
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		this.firstName = firstName;
 	}
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 	public void setLastName(String lastName) {
-		LastName = lastName;
-	}
-
-	public String getPassword() {
-		return Password;
-	}
-	public void setPassword(String password) {
-		Password = password;
-	}
-	@Override
-	public String toString() {
-		return "UserRegistration [FirstName=" + FirstName + ", LastName=" + LastName + ", Email=" + email
-				+ ", Password=" + Password + "]";
+		this.lastName = lastName;
 	}
 	public String getEmail() {
 		return email;
@@ -50,6 +38,15 @@ public class UserRegistration {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	@Override
+	public String toString() {
+		return "UserRegistration [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", password=" + password + "]";
+	}
 }
