@@ -24,9 +24,7 @@ public interface BookService {
 	List<Books> findByCategory(String category,int pageno,String sortby);
 
 	void updateBook(Books updatebook);
-	public static  void printdata()
-	{
-		System.out.println("interface");
-	}
+
+	List<Books> findAllbyfilter( int author, int publisher, int category);
 
 }

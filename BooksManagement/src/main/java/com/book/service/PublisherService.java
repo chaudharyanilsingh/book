@@ -7,4 +7,6 @@ public interface PublisherService
 
 	void savePublisher(Publisher publisher);
 
+	void deletepublisher(int id);
+
 }

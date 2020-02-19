@@ -5,5 +5,6 @@ public interface CategoryService
 {
 	Category  findByName(String name);
 	void saveCategory(Category category);
+	void deletecategorybyid(int id);
 
 }

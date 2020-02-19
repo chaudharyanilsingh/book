@@ -33,7 +33,7 @@ public class AuthorController
 	}
 
 	@RequestMapping(path="/author/{id}",method=RequestMethod.GET)
-	public Optional<Author> updateauthor(@PathVariable("id") int id) 
+	public Optional<Author> findauthor(@PathVariable("id") int id) 
 	{ 
 		
 		
@@ -41,10 +41,10 @@ public class AuthorController
 	 return author;
 	}
 	@RequestMapping(path="/updateauthor",produces= {"application/json","application/xml","text/html"}, consumes= {"application/json","application/xml","text/html"},method=RequestMethod.PUT)
-	public Author updateauthorbyid(@RequestBody Author author)
+	public String  updateauthorbyid(@RequestBody Author author)
 	{
 		Author auth=authorservice.updatebyid(author);
-		return auth;
+		return "updated successfully";
 	}
 	
 }

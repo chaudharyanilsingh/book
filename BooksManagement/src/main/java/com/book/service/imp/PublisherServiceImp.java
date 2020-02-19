@@ -11,14 +11,20 @@ import com.book.service.PublisherService;
 public class PublisherServiceImp implements PublisherService {
 
 	@Autowired
-	private PublisherRepository publishRepository;
+	private PublisherRepository publisherRepository;
 
 	@Override
 	public void savePublisher(Publisher publisher) 
 	{
-		publishRepository.save(publisher);
+		publisherRepository.save(publisher);
 	
 
+	}
+
+	@Override
+	public void deletepublisher(int id) {
+		publisherRepository.deleteById(id);
+		
 	}
 
 }

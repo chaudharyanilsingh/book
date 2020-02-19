@@ -23,5 +23,10 @@ public class CategoryServiceImp implements CategoryService {
 		categoryRepository.save(category);
 		
 	}
+	@Override
+	public void deletecategorybyid(int id) {
+	categoryRepository.deleteById(id);
+		
+	}
 
 }

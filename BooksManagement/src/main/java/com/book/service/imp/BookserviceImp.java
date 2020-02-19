@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -37,10 +38,10 @@ public class BookserviceImp implements BookService
 	@Override
 	public List<Books> findAll(int no , String sortby) 
 	{
-		//Pageable page=PageRequest.of(no,4,Sort.by(sortby));
-	     //Sort sort = new Sort(Sort.Direction.ASC,"id");
-		List<Books>pageresult=bookRepository.findAll(Sort.by(Sort.Direction.ASC,"id"));
-		return pageresult;
+		Pageable page=PageRequest.of(no,4,Sort.by(sortby));
+	    
+		Page<Books>pageresult=bookRepository.findAll(page);
+		return pageresult.getContent();
 	}
 
 	@Override
@@ -72,6 +73,14 @@ public class BookserviceImp implements BookService
 				
 					System.out.println("save existing author");
 				}
+			/*	
+			 * add new author in author table manually
+			 * if(!optionalAuthor.isPresent()) 
+				{
+					
+				authorRepository.save(bookdetail.getAuthor());
+				}
+			*/
 			 if(optionalpublisher.isPresent())
 				{
 				 
@@ -114,7 +123,7 @@ public class BookserviceImp implements BookService
 	@Override
 	public List<Books> findByTittle(String tittle , int pageno) {
 
-        Pageable page = PageRequest.of(pageno, 3 , Sort.by("id").descending());
+        Pageable page = PageRequest.of(pageno, 3 , Sort.by("id"));
 		return  bookRepository.findByTittle(tittle, page);
 	}
 
@@ -134,8 +143,13 @@ public class BookserviceImp implements BookService
 
 	@Override
 	public void updateBook(Books updatebook) {
-	
+		bookRepository.save(updatebook);
 		
 	}
 
+	@Override
+	public List<Books> findAllbyfilter( int author, int publisher, int category) {
+		List<Books> books=bookRepository.findAllByFilters(author,publisher,category);
+		return books;
+	}
 }

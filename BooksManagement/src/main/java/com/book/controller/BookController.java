@@ -22,12 +22,12 @@ public class BookController {
 	@Autowired
 	private BookService bookservice;
 
-	@RequestMapping(path = "/bookrreg")
+/*	@RequestMapping(path = "/bookrreg")
 	public ModelAndView bookpageshow() {
 		ModelAndView mv = new ModelAndView("Booklog");
 		return mv;
 	}
-
+*/
 	@RequestMapping(path = "/updatebook", produces = { "application/json", "application/xml",
 			"text/html" }, consumes = { "application/json", "application/xml",
 					"text/html" }, method = RequestMethod.PUT)
@@ -45,15 +45,28 @@ public class BookController {
 
 		return bookdetail;
 	}
-
+	
+	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public String delete(@PathVariable("id") int id) {
 		bookservice.deleteBook(id);
 		return "Data deleted ";
 	}
 
+	@GetMapping("/showbyfilters")
+	public List<Books> showbooks(
+			@RequestParam(value="author") int author,
+			@RequestParam(value="publisher")int publisher,
+			@RequestParam(value="category") int category)
+	{
+
+		return bookservice.findAllbyfilter(author,publisher,category);
+	}
 	@GetMapping("/show")
-	public List<Books> showbooks(@RequestParam(value="pageno",defaultValue="0") int no, @RequestParam(value="sortby",defaultValue="id")String sortby) {
+	public List<Books> showbookss(@RequestParam(value="pageno",defaultValue="0") int no, 
+			@RequestParam(value="sortby",defaultValue="id")String sortby)
+			
+	{
 
 		return bookservice.findAll(no,sortby);
 	}
@@ -71,13 +84,13 @@ public class BookController {
 	}
 
 	@GetMapping("/show/tittle/{tittle}")
-	public List<Books> showbooksbytittle(@PathVariable("tittle") String tittle,  @RequestParam(value="pageNo", defaultValue="0") Integer pageNo) {
+	public List<Books> showbooksbytittle(@PathVariable("tittle") String tittle,  @RequestParam(value="pageno", defaultValue="0") Integer pageNo) {
 
 		return bookservice.findByTittle(tittle,pageNo);
 	}
 
 	@GetMapping("/show/author/{author}")
-	public List<Books> showbooksbyauthor(@PathVariable("author") String author,@RequestParam(value="pagno") int pageno,@RequestParam(value="sortby") String sortby) {
+	public List<Books> showbooksbyauthor(@PathVariable("author") String author,@RequestParam(value="pageno") int pageno,@RequestParam(value="sortby") String sortby) {
 		System.out.println(author);
 
 		return bookservice.findByAuthor(author,pageno,sortby);

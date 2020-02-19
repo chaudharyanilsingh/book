@@ -1,6 +1,8 @@
 package com.book.db.entity;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,15 +13,15 @@ public class Books
 	@Id
 	private int id;
 	private String tittle;
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name="author_id")
     private Author author;
 	private int isbn;
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name="publisher_id")
 	private Publisher publisher;
     private String publishDate;
-	@OneToOne(cascade=CascadeType.PERSIST)
+	@OneToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name="category_id")
 	private Category category;
 	private int numberOfBooks;

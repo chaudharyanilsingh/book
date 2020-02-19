@@ -1,10 +1,13 @@
 package com.book.service.imp;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.book.db.entity.Books;
 import com.book.db.entity.Author;
 import com.book.repository.AuthorRepository;
 import com.book.service.AuthorService;
@@ -15,6 +18,8 @@ public class AuthorServiceImp implements AuthorService {
 
 	@Override
 	public void saveAuthor(Author author) {
+	
+	
 		authorRepository.save(author);
 	}
 
@@ -35,6 +40,7 @@ public class AuthorServiceImp implements AuthorService {
 		authorRepository.save(author);
 		return author;
 	}
+	
 
 
 }

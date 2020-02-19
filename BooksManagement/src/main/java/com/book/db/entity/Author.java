@@ -1,8 +1,13 @@
 package com.book.db.entity;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 @Entity
 public class Author {
 	
@@ -21,7 +26,8 @@ public class Author {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
+	//@OneToMany
+	//private List <Books> books;
 	private String authorName;
 	private String email;
 	private String address;
@@ -64,6 +70,12 @@ public class Author {
 		return "Author [id=" + id + ", authorName=" + authorName + ", email=" + email + ", address=" + address
 				+ ", contactNumber=" + contactNumber + "]";
 	}
+	//public List<Books> getBooks() {
+	//	return books;
+	//}
+	//public void setBooks(List<Books> books) {
+	//	this.books = books;
+	//}
 
 
 
